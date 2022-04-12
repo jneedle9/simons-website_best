@@ -1,0 +1,21 @@
+1. Front page renders out all the blog posts - done
+ - We want the first to be bigger and the rest to be the same size - done
+ - Add description field - done
+ - Style description
+   - Work on the divs for blogs rendered out -- find out why blog-0 is not adjusting to viewport - done
+   - Need to make it so schema only accepts one block (low-priority) - done
+   - Find a way to only render the 6 most recent blog posts and store the rest
+   - Find a way to style all blog posts after 0 in one classname (low-priority)
+
+2. Format the blog post page
+   - Setup grid for space - header - done
+   - Structure everything centrally starting with the title and image 
+
+3. Design the color scheme of the website (should apply to every page)
+   - Partially done
+
+4. Find a way to embed the CMS stuff in the website
+
+5. About page
+
+6. Title element and other SEO stuff (low priority for now)
