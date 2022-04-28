@@ -60,7 +60,8 @@ const aboutMe = ({authorObject}) => {
             src = '/Simon_portrait.png'
             height={500}
             width= {500}
-             priority
+            alt=''
+            priority
            /> 
         </div>
         {bio &&
@@ -77,6 +78,7 @@ const aboutMe = ({authorObject}) => {
                 src = '/linkedin_icon_simonsweb.png'
                 width={40}
                 height={40}
+                alt=''
                 priority/>
                 </Link>
             </span>
@@ -86,6 +88,7 @@ const aboutMe = ({authorObject}) => {
                 src = '/twitter_icon_simonsweb2.png'
                 width={40}
                 height={40}
+                alt=''
                 priority/>
                 </Link>
             </span>
@@ -95,6 +98,7 @@ const aboutMe = ({authorObject}) => {
                 src = '/facebook_icon_simonsweb2.png'
                 width={40}
                 height={40}
+                alt=''
                 priority/>
               </Link>  
             </span>

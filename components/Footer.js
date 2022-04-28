@@ -15,6 +15,7 @@ function Footer() {
             src = '/linkedin_icon_simonsweb.png'
             width={40}
             height={40}
+            alt=''
             priority/>
             </Link>
           </span>
@@ -24,6 +25,7 @@ function Footer() {
             src = '/twitter_icon_simonsweb2.png'
             width={40}
             height={40}
+            alt=''
             priority/>
             </Link>
           </span>
@@ -33,6 +35,7 @@ function Footer() {
             src = '/facebook_icon_simonsweb2.png'
             width={40}
             height={40}
+            alt=''
             priority/>
           </Link>  
           </span>
