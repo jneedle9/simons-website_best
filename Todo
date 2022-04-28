@@ -19,3 +19,19 @@
 5. About page
 
 6. Title element and other SEO stuff (low priority for now)
+
+
+
+//What I've done (writing to API)
+
+ - Change body to object so it's valid --- UseState with objects -> create an object with no keys/values, setState giving key and value to object
+ - 'in' = .includes, .replace, .slice pretty much the same
+
+
+
+//What I've done (Homepage/About)
+
+ - Move about to new page
+ - Added Headers for the tabs for each page in site (inluding posts)
+ - Found some images from unsplash to be added with next/image
+ 

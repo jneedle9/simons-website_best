@@ -1,0 +1,77 @@
+.footerOverallDiv{
+    display: flex;
+    flex: 0 0 100vw;
+    grid-column: 1/-1;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: repeat(5, 15%) auto; 
+    background-color: var(--light-red);
+    width: 100vw;
+}
+
+
+.iconLinksOverallBox {
+    display: flex;
+    flex: 0 0 50%;
+    place-content: center;
+}
+
+
+
+.footerTextLinksOverallBox {
+    display: flex;
+    flex: 0 0 50%;
+    /* grid-column: 2/4;
+    grid-row: 2/-2;
+    grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-rows: min-content; */
+    /* place-content: end; */
+}
+
+
+
+.columnOneBox > :hover{
+    text-decoration: solid underline .1em black;
+
+}
+
+
+.columnOneBox{
+    display: flex;
+    flex: 1 .333 33.3%;
+    flex-direction: column;
+    place-items: center;
+    font-size: 17px;
+    line-height: 1.25em;
+}
+
+
+.columnOneH1{
+    /* grid-column: 1/2; */
+    order: 0;
+    cursor: pointer;
+    margin: 25px 0 10px 0;
+}
+
+
+.columnOneItem{
+    /* grid-column: 1/2; */
+    order: 1;
+    /* grid-row: auto; */
+    cursor: pointer;
+    margin: 10px 0 10px 0;
+}
+
+
+
+.iconLinksInnerBox{
+    display: flex;
+    flex: 0 0 33%;
+}
+
+
+.socialMediaIcon {
+    align-self: flex-end;
+    margin-bottom: 10%;
+    cursor: pointer;
+    margin: 0 4px 5px 4px;
+}

@@ -1,0 +1,79 @@
+
+
+.aboutMeOverallGrid{
+    display: grid;
+    grid-row: 2/-1;
+    grid-column: 1/-1;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto;
+}
+
+
+.aboutMeInnerDiv {
+	display: grid;
+	grid-row: 2/3;
+	grid-column: 1/4;
+	grid-template-columns: 10% 40% 40% 10%;
+	grid-template-rows: auto auto auto auto;
+	background-color: var(--background-white);
+	color: var(--brown);
+}
+
+.aboutTitle{
+	grid-column: 2/4;
+	grid-row: 1/2;
+	justify-self: center;
+}
+
+
+.aboutImageDiv {
+	grid-column: 2/3;
+	grid-row: 2/3;
+	justify-self: center;
+   }
+
+.aboutPortableTextDiv {
+	grid-column: 2/-2;
+	grid-row: 3/4;
+	font-family: --body-font;
+}
+
+
+.aboutIconsDiv {
+	grid-column: 2/4;
+	grid-row: -2/-1;
+	justify-self: center;
+}
+.aboutSocialMediaIcon{
+	cursor: pointer;
+	margin: 0 4px 5px 4px;
+}
+
+.aboutContactBox {
+	grid-column: 3/4;
+	grid-row: 2/3;
+	background-color: var(--light-red);
+	color: var(--brown)
+}
+
+.aboutContactBoxH2{
+	margin-left: 8px;
+}
+
+
+
+.aboutContactBoxH3{
+	font-size: 21px;
+	margin-left: 10px;
+}
+
+.aboutContactBoxP{
+	font-size: 18px;
+	cursor: pointer;
+	font-weight: 500;
+	/* margin-left: 10px; */
+}
+
+.aboutContactBoxP:hover{
+	text-decoration: underline;
+}

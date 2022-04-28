@@ -1,3 +1,7 @@
+
+
+
+
 export default {
   name: 'post',
   title: 'Post',
@@ -28,7 +32,7 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'string',
-      validation: Rule => Rule.max(200),
+      validation: Rule => Rule.max(250),
     },
     {
       name: 'mainImage',

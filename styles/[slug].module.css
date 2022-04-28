@@ -9,6 +9,8 @@
     height: 100%;
     grid-auto-rows: min-content;
     grid-template-columns: 25% 1fr 25%;
+    overflow-wrap: break-word;
+    word-break: break-word;
     /* overflow-y:scroll; */
 }
 
@@ -29,18 +31,20 @@
 .blogDescription{
     font-size: 20px;
     margin: 0 0 10px 0;
-    font-weight:550;
+    font-weight: 550;
+    font-family: --body-font;
 }
 
 .blogAuthor{
     justify-self: start;
     align-self: end;
     font-size: 15px;
-
+    font-weight: 350;
 }
 .blogCategory{
     grid-column: 2/3;
     grid-row: 3/4;
+    font-family: --body-font;
 
 }
 
@@ -64,6 +68,8 @@
     line-height: 1.6em;
     word-break: break-word;
     width: 100%;
+    font-family: --body-font;
+    margin-left: 5px;
 }
 
 

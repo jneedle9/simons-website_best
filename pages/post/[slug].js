@@ -2,9 +2,9 @@
 import groq from 'groq'
 import imageUrlBuilder from '@sanity/image-url'
 import {PortableText} from '@portabletext/react'
-import client from '../../client'
+import {readClient} from '../../client'
 import styles from '../../styles/[slug].module.css'
-
+import Head from 'next/head'
 
 
 //Grab the slugs from sanity and use those to map out the paths for type post
@@ -12,7 +12,7 @@ import styles from '../../styles/[slug].module.css'
 // Fallback is ...complicated, see:
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
 export async function getStaticPaths() {
-  const paths = await client.fetch(
+  const paths = await readClient.fetch(
     groq`*[_type == "post" && defined(slug.current)][].slug.current`
   )
   return {
@@ -38,7 +38,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const post = await client.fetch(query, { slug })
+  const post = await readClient.fetch(query, { slug })
   return {
     props: {
       post
@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
 
 
 export function urlFor (source) {
-  return imageUrlBuilder(client).image(source)
+  return imageUrlBuilder(readClient).image(source)
 }
 
 //To be used for react component "Portable Text" 
@@ -82,7 +82,13 @@ const Post = ({post}) => {
     body,
     description = []
   } = post
+  console.log(body)
   return (
+    <>
+    <Head>
+    <title>{title} | Ansley</title>
+    <meta name='keywords'/>
+  </Head>
     <article className={styles.blogGridContainer}>
       <div className={styles.blogHeaderDiv}>
         <h1 className={styles.blogTitle}>{title}</h1>
@@ -124,6 +130,7 @@ const Post = ({post}) => {
         />
       </div>
     </article>
+  </>
   )
 }
 

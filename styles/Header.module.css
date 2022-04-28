@@ -1,0 +1,49 @@
+.headerGrid {
+	display: grid;
+	position: sticky;
+	background-color: var(--background-white);
+	align-self: center;
+	justify-self: center;
+	grid-column: 1/-1;
+	grid-row: 1/2;
+	grid-template-columns: 25% 1fr 25%;
+	border-bottom: 1px solid var(--scarlet);
+	justify-content: center;
+	width: 100%;
+	background-color: var(--background-white);
+}
+
+.headerBorder {
+	width: 100%;
+}
+
+
+.headerLinkBox{
+	display: flex;
+	grid-column: 2/3;
+	justify-content: center;
+	align-items: center;
+
+	
+}
+
+.headerLink {
+	display: flex;
+	justify-self: center;
+	align-self: center;
+	cursor: pointer;
+	flex: 0 0 15%;
+	font-size: 20px;
+	margin: 0 20px 0 20px;
+	font-weight: 500;
+	color: var(--light-gray)
+}
+
+.headerLink:hover{
+	color: var(--brown)
+}
+
+.headerLink:visited {
+	text-decoration: none;
+}
+

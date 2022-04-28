@@ -1,15 +1,28 @@
 import Link from 'next/link'
 import React from 'react'
+import styles from '../styles/Header.module.css'
 
 function Header() {
   return (
-    <div className='header-grid'>
+    <nav className={styles.headerGrid}>
+      <ul className={styles.headerLinkBox}>
         <Link className = '' href = '/'>
-          <h1 className='header-grid-item'>
-            This is the Header
-          </h1>
+          <li className={styles.headerLink}>
+            Home
+          </li>
         </Link>
-    </div>
+        <Link href = '/blogArchive'>
+          <li className={styles.headerLink}>
+            Archive
+          </li>
+        </Link>
+        <Link href = '/aboutMe'>
+          <li className={styles.headerLink}>
+            About Me
+          </li>
+        </Link>
+      </ul>        
+    </nav>
   )
 }
 

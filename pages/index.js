@@ -1,21 +1,31 @@
-import Link from 'next/link'
 import groq from 'groq'
-import client from '../client'
+import React from 'react'
+import { readClient} from '../client'
+import Link from 'next/link'
 import { urlFor } from './post/[slug]'
-import { useState } from 'react'
+import { PortableText } from '@portabletext/react'
+import Image from 'next/image'
+import Head from 'next/head'
 
-export async function getStaticProps() {
-  const posts = await client.fetch(groq`
-    *[_type == "post" && publishedAt < now()] | order(publishedAt desc)
-    {
-      mainImage,
-      slug,
-      title,
-      publishedAt,
-      description,
-      "body": body[0].children[0].text,
-    }
-  `)
+
+
+
+export async function getStaticProps(){
+  const posts = await readClient.fetch(groq`
+  *[_type == "post" && publishedAt < now()] | order(publishedAt desc)[0...3]
+  {
+    mainImage,
+    slug,
+    title,
+    publishedAt,
+    description,
+    _id,
+    "body": body[0].children[0].text,
+    "estimatedWordCount": round(length(pt::text(body)) / 5),
+    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
+    
+  }
+`)
   return {
     props: {
       posts
@@ -24,43 +34,77 @@ export async function getStaticProps() {
 }
 
 
-const Index = ({posts}) => {
-  const [showAll, toggleShowAll] = useState(false)
-    return (
-        posts.length > 0 ? posts.map(
-          //Initialize these variables - can do it like above too
-          ({ _id, title, slug, publishedAt, mainImage, description}, index) =>
-          //These things all come from the query into getStaticProps-unpacked and initialized for use in .map - second argument index self explanatory
-          <Link className= 'link-to-post' href="/post/[slug]" as={`/post/${slug.current}`}>
-            <div className={`blog-render S${index}`} key={_id}>
-              {{slug} ?
-              <div className='blog-render-title'>
-                  <a>{title}</a>{' '}
-              </div>
-             : null}
-             {{slug} ? 
-             <>   
-             <p className='blog-render-description-text'>{description}</p>
-             <h2 className='blog-render-date'>{(new Date(publishedAt).toDateString().slice(4))}</h2>
-             </>
-            : null}
-            {{mainImage} ?
-            <div className='blog-render-image-div'>              
-                <img
-                className='blog-render-image'
-                src = {urlFor(mainImage)
-                      .width(288)
-                      .url()}
-                alt = {`$article's picture`}                  
-                />
-              </div>: null}
-            </div>
-          </Link>
-        ): 'No Posts Yet')
-      }
-      
+const index = ({posts}) => {
+  return (
+  <>
+    <Head>
+    <title>Homepage | Ansley</title>
+    <meta name='keywords'/>
+  </Head>
+  <div className='homepage-grid-container'>
+    <div className='homepage-header-div'>
+    {/* <div className='homepage-header-image-div'>
+    // Adi Goldstein picture taker
+      <Image
+      src = '/mixing_studio_ansley.jpg'
+      height = {200}
+      width = {200}
+      />
+      </div> */}
+      <h1 className='homepage-header-title'>
+        Header Text
+      </h1>
+      <h1 className='homepage-header-subtitle'>
+        Subtitle header text
+      </h1>
+      </div>
+  <h3 className='homepage-announce-blog-cards'>Recent Blog Posts</h3>   
+  <div className='blog-cards-overall-flex'>
+  { posts.length > 0 ? posts.map(
+    ({mainImage,
+      slug,
+      title,
+      publishedAt,
+      description,
+      _id,
+      estimatedReadingTime,
+      estimatedWordCount}) =>
+      <div className='homepage-blog-cards-outer' key = {_id}>
+        <div className='homepage-blog-cards-inner'>
+        {mainImage &&
+        <div className='homepage-blog-card-image-div'>
+          <img
+          src = {urlFor(mainImage)
+          .width(360)
+          .height(200)
+          .url()}
+          />
+        </div>  }
+        {title &&          
+         <h1 className='homepage-blog-card-title'>{title}</h1>
+        }
+        {description &&
+        <p className='homepage-blog-card-description'>
+          {description}  
+        </p>}
+        {publishedAt &&
+        <h2 className='homepage-blog-card-date'>
+          {(new Date(publishedAt).toDateString().slice(4))}
+        </h2>}
+        {estimatedWordCount &&
+          <span className='homepage-blog-card-estimated-reading-time'>
+            {`${estimatedReadingTime} min read`}
+          </span>}
+        </div>
+    </div>
+      )
+  : null
+        }
+      </div> 
+    </div>
+  </>)
+}
+  
 
 
-
-
-export default Index
+export default index

@@ -2,12 +2,14 @@
 :root{
 	/*color variables go here*/
 	text-rendering: optimizeLegibility;
-	--background-white: rgb(245, 245, 245);
+	--background-white: rgb(251, 251, 251);
 	--scarlet: rgb(255,36,0);
 	--brown: rgb(89,39,32);
 	--light-red : rgb(248, 229, 229);
-	font-family: var(
-		--font_family_ui,
+	--light-gray: rgb(121, 108, 103);
+	--body-font:
+		'Spectral',
+		serif,
 		-apple-system,
 		BlinkMacSystemFont,
 		'Segoe UI',
@@ -16,8 +18,19 @@
 		Arial,
 		sans-serif,
 		'Apple Color Emoji',
-		'Segoe UI Emoji'
-	);
+		'Segoe UI Emoji';
+
+	font-family: var(
+		--font_family_ui,
+		 -apple-system,
+		 BlinkMacSystemFont,
+		 'Segoe UI',
+		 Roboto,
+		 Helvetica,
+		 Arial,
+		 sans-serif,
+		 'Apple Color Emoji',
+		 'Segoe UI Emoji');
 	color: var(--brown);
 }
 
@@ -28,53 +41,192 @@ body{
 
 html,body{
 	min-height: 100%;
+	min-width: 100%;
+	margin: 0;
 }
 
-
+/*can we make it auto generate rows that are 200px?*/
 .overall-grid-container {
 	display: grid;
 	grid-template-columns: 25% 1fr 25%;
-	grid-template-rows: 77px 236px repeat(5, 147px) auto;
-	position:fixed;
-	inset: 0px;
-    overflow-y: scroll;
+	/* grid-template-rows: 77px 275px repeat(5, 175px) min-content;
+	grid-auto-rows: 175px; */
+	grid-template-rows: 10% max-content;
+	grid-auto-rows: 15%;
 	background-color: var(--background-white);
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
-.header-grid {
+
+/*HOMEPAGE/INDEX*/
+
+.homepage-grid-container{
 	display: grid;
-	position: sticky;
-	background-color: var(--background-white);
-	align-self: center;
-	justify-self: center;
-	grid-column: 1/4;
+	grid-column: 1/-1;
+	grid-row: 2/-1;
+	grid-template-rows: 280px auto 1000px auto;
+	grid-template-columns: 10% 80% 10%;
+}
+
+.homepage-header-div{
 	grid-row: 1/2;
-	grid-template-columns: 25% 1fr 25%;
-	border-bottom: 1px solid var(--scarlet);
-	justify-content: center;
-	width: 100%;
-	background-color: var(--light-red);
-}
-
-.header-border {
-	width: 100%;
-}
-
-
-.header-grid-item {
-	grid-column: 2/3;
+	grid-column: 1/-1;
 	justify-self: center;
-	align-self: center;
-	cursor: pointer;
-	font-size: 28px;
+	text-align: center;
+	padding: 104px 12px 56px;
 }
 
-.header-grid-item:visited {
-	text-decoration: none;
+.homepage-header-title{
+	font-size: 56px;
+	margin: 10px 0 15px;
+}
+.homepage-header-subtitle{
+	font-size: 26px;
+	margin: 10 0 10 0;
+}
+
+.homepage-announce-blog-cards {
+	grid-row: 2/3;
+	grid-column: 2/3;
+	padding-top: 64px;
+	margin-left: 29px;
+	margin-top: 0;
+	font-size: 35px;
+}
+
+
+
+.homepage-header-image-div {
+	grid-column: 1/-1;
+	grid-row: 1/2;
+}
+
+.blog-cards-overall-flex {
+	display: flex;
+	margin-top: 144px;
+	grid-column: 2/3;
+	grid-row: 2/3;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	justify-self: center;
+	word-break: break-word;
+}
+
+
+.homepage-blog-cards-outer {
+	justify-self: center;
+	flex-direction: row;
+	display: flex;
+	flex: 2 1 auto;
+	height: 500px;
+	width: 400px;
+	justify-content: center;
+	margin: 6.5px 0 6.5px 0;
+}
+
+.homepage-blog-cards-inner {
+	justify-self: center;
+	display: grid;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
+	flex: 0 0 360px;
+	background-color: white;
+	grid-template-rows: 200px min-content auto 5%;
+	border-radius: 5px;
+}
+.homepage-blog-cards-inner:hover{
+	box-shadow: 10px 10px 5px 0px var(--light-red);
+	justify-self: center;
+	display: grid;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
+	flex: 0 0 360px;
+	background-color: white;
+	grid-template-rows: 200px min-content auto 5%;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer; 
+}
+
+
+
+.homepage-blog-card-image-div {
+	order: 0;
+	align-self: start;
+	grid-row: 1/2;
+}
+
+
+.homepage-blog-card-title{
+	font-size: 22px !important;
+	margin: 10px 5px 10px 5px;
+	align-self: start;
+	grid-row: 2/3;
+	
+}
+
+
+.homepage-blog-card-title:hover{
+	text-decoration: solid underline var(--brown) .1em
+}
+
+
+
+.homepage-blog-card-description{
+	font-size: 20px !important;
+	margin: 10px 5px 10px 5px;
+	align-self: start;
+	grid-row: 3/4;
+
+}
+
+.homepage-blog-card-date{
+	font-size: 15px;
+	grid-row: 4/5;
+	grid-column: 1/2;
+	justify-self: start;
+	margin: 12.45px 12.45px 20px 12.45px; 
+}
+
+.homepage-blog-card-estimated-reading-time{
+	font-size: 15px;
+	grid-row: 4/5;
+	grid-column: 1/2;
+	justify-self: end;
+	margin: 12.45px 12.45px 20px 12.45px; 
+}
+/* HOMEPAGE */
+
+/*about page should make modular */
+
+
+
+
+
+
+/*about page */
+
+
+
+
+/*BLOG ARCHIVE*/
+
+
+.blog-archive-grid {
+	display: grid;
+	grid-row: 2/-2;
+	grid-column: 1/-1;
+	grid-template-rows: 275px;
+	grid-template-columns: 25% 1fr 25%;
+	grid-auto-rows: 175px; 
 }
 
 .blog-render.S0 > .blog-render-title {
-	font-size: 18px;
+	font-size: 21.6px;
 }
 
 .blog-render-title{
@@ -83,6 +235,10 @@ html,body{
 	grid-row: 2/3;
 	font-size: 18px;
 	font-weight: 900;
+}
+.blog-render-title:hover{
+	text-decoration: solid underline var(--brown) .1em;
+	/* text-decoration-line: 5px var(--scarlet); */
 }
 
 .blog-render.S0 > .blog-render-description-text {
@@ -120,7 +276,7 @@ html,body{
 	grid-column: 2/3;
 	grid-row: 4/5;
 	justify-self: end;
-	margin: 12px 0 5px 0;
+	margin: 8px 0 5px 0;
 	
 }
 
@@ -155,14 +311,14 @@ html,body{
 	display: grid;
 	background-color: var(--background-white);
 	grid-column: 2/3;
-	grid-row: 2/3;
+	grid-row: 1/2;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
+	grid-template-rows: 10% auto auto 10%;
 	text-align: center;
 	cursor: pointer;
 	align-items: center;
 	text-align: left;
-	padding: 12px;
+	padding: 0 5px 0 5px;
 	border-bottom: 2px solid black;
 }
 
@@ -178,12 +334,12 @@ html,body{
 	grid-column: 2/3;
 	grid-row: auto/auto;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
+	grid-template-rows: 10% auto auto 10%;
 	text-align: center;
 	cursor: pointer;
 	align-items: center;
 	text-align: left;
-	padding: 8px;
+	padding: 0 5px 0 5px;
 	border-bottom: 1px solid gray;
 }
 
@@ -191,78 +347,6 @@ html,body{
 	background-color: var(--light-red);
 }
 
-/* .blog-2 {
-	display: grid;
-	background-color: var(--background-white);
-	grid-column: 2/3;
-	grid-row: 4/5;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
-	text-align: center;
-	cursor: pointer;
-	align-items: center;
-	text-align: left;
-	padding: 8px;
-	border-bottom: 1px solid gray;
-}
+/*BLOG ARCHIVE END*/
 
-.blog-2:hover {
-	background-color: var(--light-red);
-}
 
-.blog-3 {
-	display: grid;
-	background-color: var(--background-white);
-	grid-column: 2/3;
-	grid-row: 5/6;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
-	text-align: center;
-	cursor: pointer;
-	align-items: center;
-	text-align: left;
-	padding: 8px;
-	border-bottom: 1px solid gray;
-}
-
-.blog-3:hover {
-	background-color: var(--light-red);
-}
-
-.blog-4 {
-	display: grid;
-	background-color: var(--background-white);
-	grid-column: 2/3;
-	grid-row: 6/7;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
-	text-align: center;
-	cursor: pointer;
-	align-items: center;
-	text-align: left;
-	padding: 8px;
-	border-bottom: 1px solid gray;
-}
-
-.blog-4:hover {
-	background-color: var(--light-red);
-}
-
-.blog-5 {
-	display: grid;
-	background-color: var(--background-white);
-	grid-column: 2/3;
-	grid-row: 7/8;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 10% repeat(2, fit-content(40%)) 10%;
-	text-align: center;
-	cursor: pointer;
-	align-items: center;
-	text-align: left;
-	padding: 8px;
-	border-bottom: 1px solid gray;
-}
-
-.blog-5:hover {
-	background-color: var(--light-red);
-} */
