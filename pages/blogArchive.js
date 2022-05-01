@@ -50,9 +50,13 @@ const BlogArchive = ({posts}) => {
               </div>
              : null}
              {{slug} ? 
-             <>   
+             <>
+             {description &&   
              <p className='blog-render-description-text'>{description}</p>
+            }
+            {publishedAt &&
              <h2 className='blog-render-date'>{(new Date(publishedAt).toDateString().slice(4))}</h2>
+            }
              </>
             : null}
             {mainImage &&

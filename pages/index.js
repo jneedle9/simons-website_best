@@ -43,14 +43,6 @@ const index = ({posts}) => {
   </Head>
   <div className='homepage-grid-container'>
     <div className='homepage-header-div'>
-    {/* <div className='homepage-header-image-div'>
-    // Adi Goldstein picture taker
-      <Image
-      src = '/mixing_studio_ansley.jpg'
-      height = {200}
-      width = {200}
-      />
-      </div> */}
       <h1 className='homepage-header-title'>
         Header Text
       </h1>

@@ -77,26 +77,32 @@ const Post = ({post}) => {
   const {
     title = 'Missing title',
     name = 'Missing name',
-    categories,
-    authorImage,
-    mainImage,
-    body,
-    description = []
+    categories = null,
+    authorImage = null,
+    mainImage = null,
+    body = null,
+    description = [],
   } = post
   console.log(title)
   return (
-    <>
-  {/* <Head>
+  <>
+  {title &&
+  <Head>
     <title>{title} | Ansley</title>
     <meta name='keywords'/>
-  </Head> */}
+  </Head>
+  }
     <article className={styles.blogGridContainer}>
       <div className={styles.blogHeaderDiv}>
         <h1 className={styles.blogTitle}>{title}</h1>
-        <h2 className={styles.blogDescription}>{description}</h2>
+      {description &&
+      <h2 className={styles.blogDescription}>{description}</h2>
+      }
+      {name &&
         <Link href = "../aboutMe">
           <span className={styles.blogAuthor}>By {name}</span>
         </Link>
+      }  
       </div>
         {mainImage && (
           <div className={styles.blogImageDiv}>
@@ -109,6 +115,7 @@ const Post = ({post}) => {
             />
         </div>
       )}
+      {body &&
       <div className={styles.blogPortableTextDiv}>
         <PortableText
           className= {styles.blogPortableText}
@@ -116,6 +123,7 @@ const Post = ({post}) => {
           components={ptComponents}
         />
       </div>
+      }
     </article>
   </>
   )

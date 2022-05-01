@@ -30,7 +30,7 @@ export async function getStaticProps(){
 
 const aboutMe = ({authorObject}) => {
     const {
-            name,
+        name,
         bio,
     } = authorObject
   return (
