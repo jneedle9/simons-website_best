@@ -39,10 +39,10 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const innerRef = await readClient.fetch(query, { slug })
+  const post = await readClient.fetch(query, { slug })
   return {
     props: {
-      innerRef
+      post
     }
   }
 }
@@ -73,7 +73,7 @@ const ptComponents = {
 
 //{post} is from getStaticProps fetched from the query
 //Portable text only renders the value so far
-const Post = ({innerRef}) => {
+const Post = ({post}) => {
   const {
     title = 'Missing title',
     name = 'Missing name',
@@ -82,14 +82,14 @@ const Post = ({innerRef}) => {
     mainImage,
     body,
     description = []
-  } = innerRef
+  } = post
   console.log(title)
   return (
     <>
-    <Head>
+  {/* <Head>
     <title>{title} | Ansley</title>
     <meta name='keywords'/>
-  </Head>
+  </Head> */}
     <article className={styles.blogGridContainer}>
       <div className={styles.blogHeaderDiv}>
         <h1 className={styles.blogTitle}>{title}</h1>
