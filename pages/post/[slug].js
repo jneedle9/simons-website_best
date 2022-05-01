@@ -5,6 +5,7 @@ import {PortableText} from '@portabletext/react'
 import {readClient} from '../../client'
 import styles from '../../styles/[slug].module.css'
 import Head from 'next/head'
+import Link from "next/link"
 
 
 //Grab the slugs from sanity and use those to map out the paths for type post
@@ -38,10 +39,10 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const post = await readClient.fetch(query, { slug })
+  const innerRef = await readClient.fetch(query, { slug })
   return {
     props: {
-      post
+      innerRef
     }
   }
 }
@@ -72,7 +73,7 @@ const ptComponents = {
 
 //{post} is from getStaticProps fetched from the query
 //Portable text only renders the value so far
-const Post = ({post}) => {
+const Post = ({innerRef}) => {
   const {
     title = 'Missing title',
     name = 'Missing name',
@@ -81,8 +82,8 @@ const Post = ({post}) => {
     mainImage,
     body,
     description = []
-  } = post
-  console.log(body)
+  } = innerRef
+  console.log(title)
   return (
     <>
     <Head>
@@ -93,33 +94,19 @@ const Post = ({post}) => {
       <div className={styles.blogHeaderDiv}>
         <h1 className={styles.blogTitle}>{title}</h1>
         <h2 className={styles.blogDescription}>{description}</h2>
-        <span className={styles.blogAuthor}>By {name}</span>
+        <Link href = "../aboutMe">
+          <span className={styles.blogAuthor}>By {name}</span>
+        </Link>
       </div>
-      {/* {categories && (
-        <ul className={styles.blogCategory}>
-          Posted in
-          {categories.map(category => <li key={category}>{category}</li>)}
-        </ul>
-      )} */}
-      {/* {authorImage && (
-        <div>
-          <img
-            src={urlFor(authorImage)
-              .width(200)
-              .url()}
-            alt={`${name}'s picture`}
-          />
-        </div>
-      )} */}
-      {mainImage && (
-        <div className={styles.blogImageDiv}>
-          <img
-          className={styles.blogImage}
-          src = {urlFor(mainImage)
-                .width(759)
-                .url()}
-          alt = {`$article's picture`}                  
-          />
+        {mainImage && (
+          <div className={styles.blogImageDiv}>
+            <img
+            className={styles.blogImage}
+            src = {urlFor(mainImage)
+                  .width(759)
+                  .url()}
+            alt = {`$article's picture`}                  
+            />
         </div>
       )}
       <div className={styles.blogPortableTextDiv}>

@@ -41,6 +41,11 @@
     font-size: 15px;
     font-weight: 350;
 }
+
+.blogAuthor:hover{
+    text-decoration: underline;
+}
+
 .blogCategory{
     grid-column: 2/3;
     grid-row: 3/4;
