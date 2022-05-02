@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   )
   return {
     paths: paths.map((slug) => ({params: {slug}})),
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -46,25 +46,6 @@ export async function getStaticProps(context) {
     }
   }
 }
-
-
-// export async function getStaticProps(context) {
-//   // It's important to default the slug so that it doesn't return "undefined"
-//   const { slug = "" } = context.params
-//   const post = await client.fetch(query, { slug })
-//   return {
-//     props: {
-//       post
-//     }
-//   }
-// }
-
-
-
-
-
-
-
 
 export function urlFor (source) {
   return imageUrlBuilder(readClient).image(source)
