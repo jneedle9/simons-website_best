@@ -2,7 +2,7 @@
 import groq from 'groq'
 import imageUrlBuilder from '@sanity/image-url'
 import {PortableText} from '@portabletext/react'
-import {readClient} from '../../client'
+import {readClient, writeClient} from '../../client'
 import styles from '../../styles/[slug].module.css'
 import Head from 'next/head'
 import Link from "next/link"
@@ -13,7 +13,7 @@ import Link from "next/link"
 // Fallback is ...complicated, see:
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
 export async function getStaticPaths() {
-  const paths = await readClient.fetch(
+  const paths = await writeClient.fetch(
     groq`*[_type == "post" && defined(slug.current)][].slug.current`
   )
   return {
@@ -39,13 +39,31 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const post = await readClient.fetch(query, { slug })
+  const post = await writeClient.fetch(query, { slug })
   return {
     props: {
       post
     }
   }
 }
+
+
+// export async function getStaticProps(context) {
+//   // It's important to default the slug so that it doesn't return "undefined"
+//   const { slug = "" } = context.params
+//   const post = await client.fetch(query, { slug })
+//   return {
+//     props: {
+//       post
+//     }
+//   }
+// }
+
+
+
+
+
+
 
 
 export function urlFor (source) {
@@ -83,6 +101,7 @@ const Post = ({post}) => {
     body = null,
     description = [],
   } = post
+  console.log(post)
   return (
   <>
   {title &&
