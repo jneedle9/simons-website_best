@@ -83,7 +83,6 @@ const Post = ({post}) => {
     body = null,
     description = [],
   } = post
-  console.log(title)
   return (
   <>
   {title &&
@@ -94,7 +93,9 @@ const Post = ({post}) => {
   }
     <article className={styles.blogGridContainer}>
       <div className={styles.blogHeaderDiv}>
+        {title &&
         <h1 className={styles.blogTitle}>{title}</h1>
+      }
       {description &&
       <h2 className={styles.blogDescription}>{description}</h2>
       }
