@@ -13,7 +13,7 @@ import Link from "next/link"
 // Fallback is ...complicated, see:
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
 export async function getStaticPaths() {
-  const paths = await writeClient.fetch(
+  const paths = await readClient.fetch(
     groq`*[_type == "post" && defined(slug.current)][].slug.current`
   )
   return {
@@ -39,7 +39,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
-  const post = await writeClient.fetch(query, { slug })
+  const post = await readClient.fetch(query, { slug })
   return {
     props: {
       post
