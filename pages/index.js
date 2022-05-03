@@ -15,7 +15,7 @@ export async function getStaticProps(){
   *[_type == "post" && publishedAt < now()] | order(publishedAt desc)[0...3]
   {
     mainImage,
-    slug,
+    "slug": slug.current,
     title,
     publishedAt,
     description,
@@ -23,7 +23,6 @@ export async function getStaticProps(){
     "body": body[0].children[0].text,
     "estimatedWordCount": round(length(pt::text(body)) / 5),
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180),
-    
   }
 `)
   return {
@@ -35,6 +34,8 @@ export async function getStaticProps(){
 
 
 const index = ({posts}) => {
+  const {slug} = posts
+  console.log(slug)
   return (
   <>
     <Head>
@@ -61,34 +62,36 @@ const index = ({posts}) => {
       _id,
       estimatedReadingTime,
       estimatedWordCount}) =>
-      <div className='homepage-blog-cards-outer' key = {_id}>
-        <div className='homepage-blog-cards-inner'>
-        {mainImage &&
-        <div className='homepage-blog-card-image-div'>
-          <img
-          src = {urlFor(mainImage)
-          .width(360)
-          .height(200)
-          .url()}
-          />
-        </div>  }
-        {title &&          
-         <h1 className='homepage-blog-card-title'>{title}</h1>
-        }
-        {description &&
-        <p className='homepage-blog-card-description'>
-          {description}  
-        </p>}
-        {publishedAt &&
-        <h2 className='homepage-blog-card-date'>
-          {(new Date(publishedAt).toDateString().slice(4))}
-        </h2>}
-        {estimatedWordCount &&
-          <span className='homepage-blog-card-estimated-reading-time'>
-            {`${estimatedReadingTime} min read`}
-          </span>}
-        </div>
-    </div>
+      <Link href = {`/post/${slug}`}>
+        <div className='homepage-blog-cards-outer' key = {_id}>
+          <div className='homepage-blog-cards-inner'>
+          {mainImage &&
+          <div className='homepage-blog-card-image-div'>
+            <img
+            src = {urlFor(mainImage)
+            .width(360)
+            .height(200)
+            .url()}
+            />
+          </div>  }
+          {title &&          
+          <h1 className='homepage-blog-card-title'>{title}</h1>
+          }
+          {description &&
+          <p className='homepage-blog-card-description'>
+            {description}  
+          </p>}
+          {publishedAt &&
+          <h2 className='homepage-blog-card-date'>
+            {(new Date(publishedAt).toDateString().slice(4))}
+          </h2>}
+          {estimatedWordCount &&
+            <span className='homepage-blog-card-estimated-reading-time'>
+              {`${estimatedReadingTime} min read`}
+            </span>}
+          </div>
+      </div>
+    </Link>
       )
   : null
         }
