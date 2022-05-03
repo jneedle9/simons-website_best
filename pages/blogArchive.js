@@ -43,7 +43,7 @@ const BlogArchive = ({posts}) => {
           ({ _id, title, slug, publishedAt, mainImage, description}, index) =>
           //These things all come from the query into getStaticProps-unpacked and initialized for use in .map - second argument index self explanatory
           <Link className= 'link-to-post' href="/post/[slug]" as={`/post/${slug.current}`} key = {_id}> 
-            <div className={`blog-render S${index}`} key={_id}>
+            <a className={`blog-render S${index}`}>
               {{slug} ?
               <div className='blog-render-title'>
                   <a>{title}</a>{' '}
@@ -70,7 +70,7 @@ const BlogArchive = ({posts}) => {
                 />
               </div>}
               
-            </div>
+            </a>
           </Link>
         ): 'No Posts Yet'
     }

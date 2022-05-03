@@ -45,12 +45,12 @@ const aboutMe = ({authorObject}) => {
           <h2 className={styles.aboutContactBoxH2}> Contact me at: </h2>
           <h3 className={styles.aboutContactBoxH3}> Email:
           <Link href = "mailto:simon.needlepoint@gmail.com" alt = "gmail.com">
-            <p className={styles.aboutContactBoxP}> simon.needlepoint@gmail.com</p>
+            <a className={styles.aboutContactBoxA}> simon.needlepoint@gmail.com</a>
           </Link>
           </h3>
           <h3 className={styles.aboutContactBoxH3}> Book a lesson:
           <Link href="https://www.rangr.org/ansleymusic">
-            <p className={styles.aboutContactBoxP}>https://www.rangr.org/ansleymusic</p>
+            <a className={styles.aboutContactBoxA}>https://www.rangr.org/ansleymusic</a>
           </Link>
           </h3>
         </div>

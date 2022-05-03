@@ -50,6 +50,8 @@
     order: 0;
     cursor: pointer;
     margin: 25px 0 10px 0;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 
@@ -59,6 +61,8 @@
     /* grid-row: auto; */
     cursor: pointer;
     margin: 10px 0 10px 0;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 

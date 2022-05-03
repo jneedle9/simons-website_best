@@ -38,6 +38,8 @@
     align-self: end;
     font-size: 15px;
     font-weight: 350;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .blogAuthor:hover{

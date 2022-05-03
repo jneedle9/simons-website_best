@@ -7,19 +7,19 @@ function Header() {
     <nav className={styles.headerGrid}>
       <ul className={styles.headerLinkBox}>
         <Link className = '' href = '/'>
-          <li className={styles.headerLink}>
+          <a className={styles.headerLink}>
             Home
-          </li>
+          </a>
         </Link>
         <Link href = '/blogArchive'>
-          <li className={styles.headerLink}>
+          <a className={styles.headerLink}>
             Archive
-          </li>
+          </a>
         </Link>
         <Link href = '/aboutMe'>
-          <li className={styles.headerLink}>
+          <a className={styles.headerLink}>
             About Me
-          </li>
+          </a>
         </Link>
       </ul>        
     </nav>

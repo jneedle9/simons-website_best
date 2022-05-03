@@ -44,13 +44,13 @@ function Footer() {
         <div className= {styles.footerTextLinksOverallBox}>
           <div className={styles.columnOneBox}>
           <Link href = '/'>
-          <h1 className={styles.columnOneH1}>Home</h1>
+          <a className={styles.columnOneH1}>Home</a>
           </Link>
-          <Link href= './blogArchive'>
-          <p className= {styles.columnOneItem}>Blog Archive</p>
+          <Link href= '/blogArchive'>
+          <a className= {styles.columnOneItem}>Blog Archive</a>
           </Link>
-          <Link href= './aboutMe'>
-          <p className= {styles.columnOneItem}>About Me</p>
+          <Link href= '/aboutMe'>
+          <a className= {styles.columnOneItem}>About Me</a>
           </Link>
         </div>
       </div>    

@@ -61,7 +61,7 @@ const index = ({posts}) => {
       estimatedReadingTime,
       estimatedWordCount}) =>
       <Link href = {`/post/${slug}`} key = {_id}>
-        <div className='homepage-blog-cards-outer'>
+        <a className='homepage-blog-cards-outer'>
           <div className='homepage-blog-cards-inner'>
           {mainImage &&
           <div className='homepage-blog-card-image-div'>
@@ -88,7 +88,7 @@ const index = ({posts}) => {
               {`${estimatedReadingTime} min read`}
             </span>}
           </div>
-      </div>
+      </a>
     </Link>
       )
   : null

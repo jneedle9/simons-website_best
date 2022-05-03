@@ -123,7 +123,13 @@ html,body{
 	width: 400px;
 	justify-content: center;
 	margin: 6.5px 0 6.5px 0;
+	text-decoration: inherit;
+	color: inherit;
 }
+
+
+
+
 
 .homepage-blog-cards-inner {
 	justify-self: center;
@@ -320,6 +326,8 @@ html,body{
 	text-align: left;
 	padding: 0 5px 0 5px;
 	border-bottom: 2px solid black;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 .blog-render.S0:hover {
@@ -341,6 +349,8 @@ html,body{
 	text-align: left;
 	padding: 0 5px 0 5px;
 	border-bottom: 1px solid gray;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 .blog-render:hover{

@@ -101,7 +101,7 @@ const Post = ({post}) => {
       }
       {name &&
         <Link href = "../aboutMe">
-          <span className={styles.blogAuthor}>By {name}</span>
+          <a className={styles.blogAuthor}>By {name}</a>
         </Link>
       }  
       </div>
