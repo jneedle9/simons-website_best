@@ -43,18 +43,16 @@ const aboutMe = ({authorObject}) => {
         <h1 className={styles.aboutTitle}>About me</h1>
         <div className={styles.aboutContactBox}>
           <h2 className={styles.aboutContactBoxH2}> Contact me at: </h2>
-          <h3 className={styles.aboutContactBoxH3}> Email:
+          <h3 className={styles.aboutContactBoxH3}> Email:{'\n'}</h3>
           <Link href = "mailto:simon.needlepoint@gmail.com" alt = "gmail.com">
             <a className={styles.aboutContactBoxA}> simon.needlepoint@gmail.com</a>
           </Link>
-          </h3>
-          <h3 className={styles.aboutContactBoxH3}> Book a lesson:
+          <h3 className={styles.aboutContactBoxH3}> Book a lesson: {'\n'} </h3>
           <Link href="https://www.rangr.org/ansleymusic">
             <a className={styles.aboutContactBoxA}>https://www.rangr.org/ansleymusic</a>
           </Link>
-          </h3>
+          
         </div>
-        
         <div className={styles.aboutImageDiv}>
           <Image
             src = '/Simon_portrait.png'
