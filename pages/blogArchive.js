@@ -28,7 +28,7 @@ export async function getStaticProps() {
 
 
 const BlogArchive = ({posts}) => {
-  const [showAll, toggleShowAll] = useState(false)
+  //const [showAll, toggleShowAll] = useState(false)
     // Eventually we want a button to toggle show all posts
     return (
       <>
