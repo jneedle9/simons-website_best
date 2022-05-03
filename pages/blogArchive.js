@@ -18,7 +18,6 @@ export async function getStaticProps() {
       "body": body[0].children[0].text,
     }
   `)
- 
   return {
     props: {
       posts
@@ -42,8 +41,8 @@ const BlogArchive = ({posts}) => {
           //Initialize these variables - can do it like above too
           ({ _id, title, slug, publishedAt, mainImage, description}, index) =>
           //These things all come from the query into getStaticProps-unpacked and initialized for use in .map - second argument index self explanatory
-          <Link className= 'link-to-post' href="/post/[slug]" as={`/post/${slug.current}`} key = {_id}> 
-            <a className={`blog-render S${index}`}>
+          <Link  href="/post/[slug]" as={`/post/${slug.current}`} key = {_id}> 
+            <div className= {`blog-render S${index}`}>
               {{slug} ?
               <div className='blog-render-title'>
                   <a>{title}</a>{' '}
@@ -69,8 +68,7 @@ const BlogArchive = ({posts}) => {
                 alt = {`$article's picture`}                  
                 />
               </div>}
-              
-            </a>
+            </div>
           </Link>
         ): 'No Posts Yet'
     }
