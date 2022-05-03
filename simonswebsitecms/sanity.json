@@ -2,7 +2,7 @@
   "root": true,
   "project": {
     "name": "simons-website-cms",
-    "basePath": "/studio"
+    "basePath": ""
   },
   "api": {
     "projectId": "y4xpw2ks",
