@@ -34,8 +34,6 @@ export async function getStaticProps(){
 
 
 const index = ({posts}) => {
-  const {slug} = posts
-  console.log(slug)
   return (
   <>
     <Head>
@@ -62,8 +60,8 @@ const index = ({posts}) => {
       _id,
       estimatedReadingTime,
       estimatedWordCount}) =>
-      <Link href = {`/post/${slug}`}>
-        <div className='homepage-blog-cards-outer' key = {_id}>
+      <Link href = {`/post/${slug}`} key = {_id}>
+        <div className='homepage-blog-cards-outer'>
           <div className='homepage-blog-cards-inner'>
           {mainImage &&
           <div className='homepage-blog-card-image-div'>
