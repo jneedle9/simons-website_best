@@ -36,7 +36,8 @@
 	font-size: 20px;
 	margin: 0 20px 0 20px;
 	font-weight: 500;
-	color: var(--light-gray)
+	color: var(--light-gray);
+	white-space: nowrap
 }
 
 .headerLink:hover{

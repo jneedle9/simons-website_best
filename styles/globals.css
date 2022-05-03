@@ -51,7 +51,7 @@ html,body{
 	grid-template-columns: 25% 1fr 25%;
 	/* grid-template-rows: 77px 275px repeat(5, 175px) min-content;
 	grid-auto-rows: 175px; */
-	grid-template-rows: 10% max-content;
+	grid-template-rows: min-content max-content;
 	grid-auto-rows: 15%;
 	background-color: var(--background-white);
 	overflow-x: hidden;
