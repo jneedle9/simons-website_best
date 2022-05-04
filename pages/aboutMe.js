@@ -51,7 +51,6 @@ const aboutMe = ({authorObject}) => {
           <Link href="https://www.rangr.org/ansleymusic">
             <a className={styles.aboutContactBoxA}>https://www.rangr.org/ansleymusic</a>
           </Link>
-          
         </div>
         <div className={styles.aboutImageDiv}>
           <Image
