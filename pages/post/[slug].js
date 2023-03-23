@@ -37,7 +37,6 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
 //"Pre-render at build-time using props returned from this function"
 //https://nextjs.org/docs/api-reference/data-fetching/get-static-props
 export async function getStaticProps(context) {
-  // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
   const post = await readClient.fetch(query, { slug })
   return {
@@ -63,7 +62,7 @@ const ptComponents = {
         <img
           alt={value.alt || ' '}
           loading="lazy"
-          src={urlFor(value).width(500).height(240).fit('max').auto('format')}
+          src={urlFor(value).width(759).fit('min').auto('format')}
         />
       )
     }
@@ -71,7 +70,6 @@ const ptComponents = {
 }
 
 //{post} is from getStaticProps fetched from the query
-//Portable text only renders the value so far
 const Post = ({post}) => {
   const {
     title = 'Missing title',

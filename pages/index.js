@@ -10,8 +10,8 @@ import Head from 'next/head'
 
 
 
-export async function getStaticProps(){
-  const posts = await readClient.fetch(groq`
+export async function getStaticProps(){ /** fetching all this info from sanity using their backend language called groq */
+  const posts = await readClient.fetch(groq` 
   *[_type == "post" && publishedAt < now()] | order(publishedAt desc)[0...3]
   {
     mainImage,
@@ -39,8 +39,8 @@ const index = ({posts}) => {
     <Head>
     <title>Homepage | Ansley</title>
     <meta name='keywords'/>
-  </Head>
-  <div className='homepage-grid-container'>
+    </Head>
+  <div className='homepage-grid-container'> 
     <div className='homepage-header-div'>
       <h1 className='homepage-header-title'>
         Header Text
@@ -48,10 +48,10 @@ const index = ({posts}) => {
       <h1 className='homepage-header-subtitle'>
         Subtitle header text
       </h1>
-      </div>
-  <h3 className='homepage-announce-blog-cards'>Recent Blog Posts</h3>   
-  <div className='blog-cards-overall-flex'>
-  { posts.length > 0 ? posts.map(
+  </div>
+  <h3 className='homepage-announce-blog-cards'>Recent Blog Posts</h3>  
+  <div className='blog-cards-overall-flex'> {/* flexbox for blog cards */}
+  { posts.length > 0 ? posts.map( /** if there are more than 0 posts grab the attributes fetched earlier */
     ({mainImage,
       slug,
       title,
@@ -60,10 +60,10 @@ const index = ({posts}) => {
       _id,
       estimatedReadingTime,
       estimatedWordCount}) =>
-      <Link href = {`/post/${slug}`} key = {_id}>
+      <Link href = {`/post/${slug}`} key = {_id}> {/* gives a link based on the slug */}
         <a className='homepage-blog-cards-outer'>
           <div className='homepage-blog-cards-inner'>
-          {mainImage &&
+          {mainImage && // conditional rendering for the following attributes
           <div className='homepage-blog-card-image-div'>
             <img
             src = {urlFor(mainImage)
